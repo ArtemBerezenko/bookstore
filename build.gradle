@@ -1,0 +1,25 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set('resilience4jVersion', '0.14.1')
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation("io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}")
+    implementation("io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}")
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
